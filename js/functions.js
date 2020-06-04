@@ -25,7 +25,7 @@ var iSuperchat = true;
 var iVoicechat = true;
 
 
-var iName = "Test1";
+var iName = "Test";
 var iSeconds = 30;
 var iMinimumBarrs = 5;
 var iInvites = true;
