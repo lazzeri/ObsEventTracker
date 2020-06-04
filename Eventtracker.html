@@ -6,32 +6,18 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.0.6/fetch-jsonp.min.js"></script>
 
 	<style>
-
-		#Chat
-		{
-			width: 200px;
-			height: 485px;
-			position: absolute;
-			top:10px;
-			left:500px;
-		}
-
 		#EventTracker	
 		{	
 			display: grid;
   			grid-template-columns: 1fr;
-			background:grey;
 			width: 200px;
 			height: 485px;
+			position: absolute;
 		}
-
 		.Panel
 		{
 			background:#827c7c70;
-			height: 36px;
-			
-
-
+			height: 40px;
 			text-align: center;
     		vertical-align: middle;
 			line-height: 2;
@@ -49,15 +35,74 @@
 			text-transform: none;
 			border-width:2.4;
 		}
+		#Chat
+		{
+			width: 250px;
+			height: 489px;
+			position: absolute;
+			background: green;
+			left: 220px;
+		}
 
-@media print {
-body {-webkit-print-color-adjust: exact;}
-}
+		#Stats
+		{
+			width: 250px;
+			height: 535px;
+			position: absolute;
+			background: lightgrey;
+			left: 220px;
+			border-style: solid;
+			border-color: black;
+			border-bottom: none;
+		}
+
+		#Progres
+		{
+			position: absolute;
+			width:130px;
+			float:left;
+			left: 480px;
+		}
+
+		#ProgresColor
+		{
+    		top: 90px;
+    		width: 44px;
+    		height: 35px;
+    		background: red;
+    		position: absolute;
+    		left: 26px;
+		}
+
+		h1
+		{
+			position: absolute;
+    		left: 5%;
+		}
+		
+		.Text
+		{
+			margin-top: 2px;
+			margin-left: 10px;
+		}
+		@media print 
+		{
+		body {-webkit-print-color-adjust: exact;}
+		}
+
+		@media screen and (-webkit-min-device-pixel-ratio:0) {
+    input[type='range'] {
+      overflow: hidden;
+      -webkit-appearance: none;
+      background-color: #9a905d;
+    }
 
 	</style>
 	</head>
-	<body onload="RunCode();">
+	<body onload="instatiateVars();">
 		<div id="EventTracker"> 
+			<div id="Progress>" class="Progres">
+			</div>
 			<div id="p1" class="Panel">
 			</div>
 			<div id="p2" class="Panel">
@@ -82,14 +127,64 @@ body {-webkit-print-color-adjust: exact;}
 			</div>
 			<div id="p12" class="Panel">
 			</div>
-			<div id="p13" class="Panel">
-			</div>
-			<div id="p14" class="Panel">
-			</div>
 		</div>
-
-		<div id="Chat">
+		<div id="Stats">
+			<h1> Stream Stats</h1>
+			<div id="t1" class="Text"  style="margin-top: 65;">Text1 </div>
+			<div id="t2" class="Text">Text2 </div>
+			<div id="t3" class="Text">Text3 </div>
+			<div id="t4" class="Text">Text4 </div>
+			<div id="t5" class="Text">Text5 </div>
+			<div id="t6" class="Text">Text6 </div>
 
 		</div>
+		
+		<div id="Progres">
+			<div>
+			<button onclick="  saveVars();"> Save Settings</button>
+			<button onclick="  TextToSpeech('Test 123. Test 123.','Jeff')"> Test Voice</button>
+
+			<button id="btn" onclick="RefreshPage(); RunCode(); " style="position: absolute; top: 44px;left: 0;">Start Tracking</button>
+			<div id="Status" style="position: absolute;top: 64px;left: 0px; width:200px"> Status </div>
+			<div id="ProgresColor"> </div>
+			</div>
+			<div style="margin-top: 100px; width: 185px;">
+				<label> Name:
+				<input type="text" id="ipName" value="YourName"> 
+				</label>
+
+				<label> Seconds between color change:
+				<input type="text" id="ipTimeBetweenColor" value="30"> 
+				</label>
+
+				<label> Minimum barrs to add event to list:
+				<input type="text" id="ipMinimumBarrs" value ="5"> 
+				</label>
+				<br>
+				<input type="checkbox" id="ipInvites" name="vehicle1">
+  				<label for="vehicle1"> Show Invites</label><br>
+  				<input type="checkbox" id="ipMoments" name="vehicle2">
+  				<label for="vehicle2"> Show Moments</label><br>
+  				<input type="checkbox" id="ipFans" name="vehicle3">
+  				<label for="vehicle3"> Show Fans</label><br><br>
+
+				<input type="checkbox" id="ip1" name="vehicle4">
+  				<label for="vehicle4"> Music for 50-100 likes</label><br>
+  				<input type="checkbox" id="ip2" name="vehicle5">
+  				<label for="vehicle5"> Music for 400-500 likes</label><br>
+  				<input type="checkbox" id="ip3" name="vehicle6">
+  				<label for="vehicle6"> Music for 1000 likes</label><br>
+				<input type="checkbox" id="ip4" name="vehicle7">
+  				<label for="vehicle7"> Music for 2000 likes</label><br>
+  				<input type="checkbox" id="ip5" name="vehicle8">
+  				<label for="vehicle8"> Music for 2000+ likes</label><br>
+  				<input type="checkbox" id="ip6" name="vehicle8">
+  				<label for="vehicle8"> Add Voice for SuperChat</label><br>
+  				<input type="checkbox" id="ip7" name="vehicle8">
+  				<label for="vehicle8"> Add Full Voicechat</label><br>
+  				<input type="range" id="ip8" name="volume" min="0" max="100">
+  				<label for="volume">Volume for Voicechat</label>
+
+		 	</div>
 	</body>
 </html>
